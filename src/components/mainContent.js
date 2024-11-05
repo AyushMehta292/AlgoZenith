@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
-import {
-  FaQuestionCircle,
-  FaBook,
-  FaBell,
-  FaUserCircle,
-  FaClock,
-  FaMedium,
-  FaVideo,
-  FaNewspaper,
-  FaCalculator,
-  FaCode,
-  FaBookOpen,
-} from "react-icons/fa";
-import { MdExpandLess, MdExpandMore } from "react-icons/md";
-import { SlDocs } from "react-icons/sl";
+
+import FaBell from "../svgAZ/Bell.svg";
+import FaUserCircle from "../svgAZ/Ellipse 13.svg";
+import FaQuestionCircle from "../svgAZ/InformationCircleOutline.svg";
+import FaBook from "../svgAZ/CalendarOutline.svg";
+import FaClock from "../svgAZ/ClockOutline.svg";
+import FaMedium from "../svgAZ/ChartBarOutline.svg";
+import FaVideo from "../svgAZ/PlayOutline.svg";
+import FaNewspaper from "../svgAZ/QuestionMarkCircleOutline.svg";
+import FaCalculator from "../svgAZ/QuestionMarkCircleOutline.svg";
+import FaCode from "../svgAZ/CodeOutline.svg";
+import FaBookOpen from "../svgAZ/DocumentDuplicateOutline.svg";
+import FaLearning from "../svgAZ/BriefcaseOutline.svg";
+import MdExpandLess from "../svgAZ/Vector.svg";
+import MdExpandMore from "../svgAZ/Vector (1).svg";
+
 import { chapters } from "./chapters";
 export default function MainContent() {
-
   const [selectedTab, setSelectedTab] = useState("Mentor Sessions");
   const [selectedChapter, setSelectedChapter] = useState(chapters[0]);
   const [expandedParts, setExpandedParts] = useState({});
@@ -86,12 +86,24 @@ export default function MainContent() {
     <>
       <div className="w-full mr-10 ml-10">
         {/* Header */}
-        <div className="p-4 pr-0 flex flex-row-reverse gap-5 items-center h-auto my-[0.4rem]">
-          <FaUserCircle className="text-black text-3xl hover:cursor-pointer" onClick={() => alert("User icon clicked")} />
-          <FaBell className="text-black text-3xl hover:cursor-pointer" onClick={() => alert("Bell icon clicked")} />
+        <div className="p-1 pr-0 flex flex-row-reverse gap-5 items-center h-auto my-[0.4rem]">
+          <img
+            src={FaUserCircle}
+            alt="User Icon"
+            className="text-black text-3xl hover:cursor-pointer"
+            onClick={() => alert("User icon clicked")}
+            // width="63"
+            // height="63"
+          />
+          <img
+            src={FaBell}
+            alt="Bell Icon"
+            className="text-black text-3xl hover:cursor-pointer"
+            onClick={() => alert("Bell icon clicked")}
+          />
         </div>
-        <div className="flex-grow p-6 border bg-white border-[#A4E6FF] rounded-lg shadow-md h-[90%] overflow-hidden">
-          <header className="flex justify-between items-center mb-4">
+        <div className="flex-grow p-4 border bg-white border-[#A4E6FF] rounded-lg shadow-md h-[90%]">
+          <header className="flex justify-between items-center mb-2">
             <div className="flex p-1 bg-gradient-to-t from-white to-blue-100 rounded-lg">
               <button
                 className={`text-gray-600 hover:text-gray-700 rounded-lg p-2 flex items-center ${
@@ -101,7 +113,7 @@ export default function MainContent() {
                 }`}
                 onClick={() => handleTabToggle("Mentor Sessions")}
               >
-                <FaBook className="mr-2" /> Mentor Sessions
+                <img src={FaBook} alt="Mentor Sessions Icon" className="mr-2" /> Mentor Sessions
               </button>
               <button
                 className={`text-gray-600 hover:text-gray-700 rounded-lg p-2 flex items-center ${
@@ -111,7 +123,7 @@ export default function MainContent() {
                 }`}
                 onClick={() => handleTabToggle("Learning Material")}
               >
-                <FaBook className="mr-2" /> Learning Material
+                <img src={FaLearning} alt="Learning Material Icon" className="mr-2" /> Learning Material
               </button>
             </div>
             <button
@@ -120,43 +132,57 @@ export default function MainContent() {
                 alert("How it works information will be displayed here.")
               }
             >
-              <FaQuestionCircle className="mr-2 text-gray-600" /> How it works
+              <img src={FaQuestionCircle} alt="How it Works Icon" className="mr-2 text-gray-600" /> How it works
             </button>
           </header>
-
+          <div className="h-[1px] w-full bg-[#F2FAFF] mb-2"></div>
           <div className="flex">
             <aside className="w-1/4 p-4">
               <ul className="space-y-2">
                 {chapters.map((chapter) => (
+                  <div className="mb-1 bg-gradient-to-r from-transparent from-0% via-[#A4E6FF] via-50% to-transparent to-100% pb-[0.5px]">
                   <li
                     key={chapter.name}
                     className={`cursor-pointer hover:text-blue-700 py-2 px-4 rounded-lg font-semibold transition duration-300 ease-in-out ${
                       selectedChapter.name === chapter.name
                         ? "bg-[#EFF5FF]"
-                        : ""
+                        : "bg-white"
                     }`}
                     onClick={() => setSelectedChapter(chapter)}
                   >
                     <div className="flex justify-between items-center">
                       <span>{chapter.name}</span>
                       <span className="text-gray-400 text-sm flex items-center">
-                        <FaClock className="mr-1" />
-                        {calculateTotalDuration(
-                          chapter.parts.reduce(
-                            (acc, part) => acc.concat(part.resources),
-                            []
-                          )
-                        )}
+                      {selectedChapter.name === chapter.name && 
+                      <>
+                      <img src={FaClock} alt="Clock Icon" className="mr-1" width="24" />
+                        <span
+                          style={{
+                            width: "60px",
+                            display: "inline-flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          {calculateTotalDuration(
+                            chapter.parts.reduce(
+                              (acc, part) => acc.concat(part.resources),
+                              []
+                            )
+                          )}
+                        </span>
+                        </>}
                       </span>
                     </div>
                   </li>
+                  </div>
                 ))}
               </ul>
             </aside>
 
-            <section className="w-3/4 ml-4">
+            <section className="w-3/4 ml-4 h-[calc(100dvh-13rem)] overflow-scroll">
               {selectedChapter && (
-                <div className="space-y-4 h-[39rem] overflow-scroll">
+                <div className="space-y-4 ">
                   {selectedChapter.parts.map((part, index) => (
                     <div
                       key={part.name}
@@ -176,27 +202,38 @@ export default function MainContent() {
                         </div>
                         <div className="flex items-center justify-end text-gray-500">
                           <div className="mr-4 flex items-center">
-                            <FaClock className="mr-1" />
-                            {calculateTotalDuration(part.resources)}
+                            <img src={FaClock} alt="Clock Icon" className="mr-1" width="26" />
+                            <span
+                              style={{
+                                width: "60px",
+                                display: "inline-flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                              }}
+                            >
+                              {calculateTotalDuration(part.resources)}
+                            </span>
                           </div>
                           <div className="mr-4 flex items-center">
-                            <FaMedium className="mr-1" /> Medium</div>
+                            <img src={FaMedium} alt="Medium Icon" className="mr-1" width="26" /> Medium
+                          </div>
                           <div className="mr-4 flex items-center">
-                          <SlDocs className="mr-1" />
-                          {part.resources.length}</div>
+                            <img src={FaBookOpen} alt="Book Icon" className="mr-1" width="26" />
+                            {part.resources.length}
+                          </div>
                           {expandedParts[part.name] ? (
-                            <MdExpandLess className="ml-2 text-gray-600 text-2xl" />
+                            <img src={MdExpandLess} alt="Expand Less Icon" className="ml-2 text-gray-600 text-2xl" />
                           ) : (
-                            <MdExpandMore className="ml-2 text-gray-600 text-2xl" />
+                            <img src={MdExpandMore} alt="Expand More Icon" className="ml-2 text-gray-600 text-2xl" />
                           )}
                         </div>
                       </h4>
                       <div className="bg-gray-200 text-gray-600 mx-0 rounded-bl-full rounded-br-full relative">
                         <div className=" absolute -top-[2rem] right-[0.3rem] text-sm text-gray-800 border border-[#A4E6FF] bg-[#EFF5FF] p-1 rounded-lg scale-75">
-                          {calculateProgress(
+                          {(calculateProgress(
                             part.resources,
                             visitedResources[part.name] || {}
-                          )}
+                          ).toFixed(2) || 0)}
                           % Completed
                         </div>
                         <div
@@ -220,21 +257,39 @@ export default function MainContent() {
                           {part.resources.map((resource) => (
                             <div
                               key={resource.name}
-                              className="mb-1 bg-gradient-to-r from-transparent from-0% via-black via-50% to-transparent to-100% pb-[0.5px]"
+                              className="mb-1 bg-gradient-to-r from-transparent from-0% via-gray-500 via-50% to-transparent to-100% pb-[0.5px]"
                             >
                               <div className="flex justify-between items-center p-2 bg-white">
                                 <div className="flex mr-2 items-center justify-center">
-
-                                {resource.type === 'Video' && <FaVideo className="mr-2" />}
-                                {resource.type === 'Article' && <FaNewspaper className="mr-2" />}
-                                {resource.type === 'Quiz' && <FaCalculator className="mr-2" />}
-                                {resource.type === 'Coding Exercise' && <FaCode className="mr-2" />}
-                                {resource.type === 'Combined Resource' && <FaBookOpen className="mr-2" />}
-                                <span>{resource.name}</span>
+                                  {resource.type === "Video" && (
+                                    <img src={FaVideo} alt="Video Icon" className="mr-2" />
+                                  )}
+                                  {resource.type === "Article" && (
+                                    <img src={FaNewspaper} alt="Article Icon" className="mr-2" />
+                                  )}
+                                  {resource.type === "Quiz" && (
+                                    <img src={FaCalculator} alt="Quiz Icon" className="mr-2" />
+                                  )}
+                                  {resource.type === "Coding Exercise" && (
+                                    <img src={FaCode} alt="Coding Exercise Icon" className="mr-2" />
+                                  )}
+                                  {resource.type === "Combined Resource" && (
+                                    <img src={FaBookOpen} alt="Combined Resource Icon" className="mr-2" />
+                                  )}
+                                  <span>{resource.name}</span>
                                 </div>
                                 <div className="flex items-center text-gray-500">
-                                  <FaClock className="mr-1" />
-                                  {resource.duration}
+                                  <img src={FaClock} alt="Clock Icon" className="mr-1" />
+                                  <span
+                                    style={{
+                                      width: "60px",
+                                      display: "inline-flex",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                    }}
+                                  >
+                                    {resource.duration}
+                                  </span>
                                   <input
                                     type="checkbox"
                                     checked={

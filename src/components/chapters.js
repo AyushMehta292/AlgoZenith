@@ -3,7 +3,7 @@ export const chapters = [
       name: "Chapter 1",
       parts: [
         {
-          name: "Introduction",
+          name: "Introduction to Lorem",
           resources: [
             {
               type: "Video",
@@ -61,6 +61,101 @@ export const chapters = [
               duration: "20:05",
               visited: false,
               file: "combined-resource-2.pdf",
+            },
+            {
+              type: "Video",
+              name: "Video 9",
+              duration: "36:15",
+              visited: false,
+            },
+            {
+              type: "Article",
+              name: "Article 9",
+              duration: "13:20",
+              visited: false,
+            },
+            { type: "Quiz", name: "Quiz 9", duration: "14:50", visited: false },
+            {
+              type: "Coding Exercise",
+              name: "Coding Exercise 9",
+              duration: "16:00",
+              visited: false,
+            },
+            {
+              type: "Combined Resource",
+              name: "Combined Resource 9",
+              duration: "17:50",
+              visited: false,
+              file: "combined-resource-9.pdf",
+            },
+            {
+              type: "Video",
+              name: "Video 10",
+              duration: "37:30",
+              visited: false,
+            },
+            {
+              type: "Article",
+              name: "Article 10",
+              duration: "13:35",
+              visited: false,
+            },
+          ],
+        },
+        {
+          name: "Additional Topics",
+          resources: [
+            {
+              type: "Video",
+              name: "Video 11",
+              duration: "38:45",
+              visited: false,
+            },
+            {
+              type: "Article",
+              name: "Article 11",
+              duration: "13:50",
+              visited: false,
+            },
+            { type: "Quiz", name: "Quiz 11", duration: "15:05", visited: false },
+            {
+              type: "Coding Exercise",
+              name: "Coding Exercise 11",
+              duration: "16:15",
+              visited: false,
+            },
+            {
+              type: "Combined Resource",
+              name: "Combined Resource 11",
+              duration: "18:05",
+              visited: false,
+              file: "combined-resource-11.pdf",
+            },
+            {
+              type: "Video",
+              name: "Video 12",
+              duration: "40:00",
+              visited: false,
+            },
+            {
+              type: "Article",
+              name: "Article 12",
+              duration: "14:05",
+              visited: false,
+            },
+            { type: "Quiz", name: "Quiz 12", duration: "15:20", visited: false },
+            {
+              type: "Coding Exercise",
+              name: "Coding Exercise 12",
+              duration: "16:30",
+              visited: false,
+            },
+            {
+              type: "Combined Resource",
+              name: "Combined Resource 12",
+              duration: "18:20",
+              visited: false,
+              file: "combined-resource-12.pdf",
             },
           ],
         },
